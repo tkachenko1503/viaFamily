@@ -1,8 +1,8 @@
 requirejs.config({
     "baseUrl": 'javascripts',
     "paths": {
-        "jquery": '/vendor/bower_components/jquery/jquery.min',
-        "ko": '/vendor/bower_components/knockout/build/output/knockout-latest',
+        "jquery": 'jquery.min',
+        "ko": 'knockout-latest',
         "calendar": 'node-calendar'
     },
     shim: {

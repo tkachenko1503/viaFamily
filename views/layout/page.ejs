@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      viaFAMILY
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Didact+Gothic|Love+Ya+Like+A+Sister&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/css/css/fontello.css' />
+    <link rel='stylesheet' href='/css/norm.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    <link rel='stylesheet' href='/css/ui.css' />
+
+  </head>
+  <body class="main-wrapper">
+    <section class="calendar-block">
+
+        <%- partial('../partials/header')%>
+        <%- body %>
+        <%- partial('../partials/footer')%>
+
+    </section>
+    <div class="overlay" data-bind="visible: showOverlay"></div>
+    <div id="popup-dialog" class="dialog" data-bind="css: popupVisible">
+        <span class="close-icon" data-bind="click: $root.closePopup()"><i class="icon-cancel-circled"></i></span>
+        <%- partial('../partials/slide-details')%>
+        <%- partial('../partials/slide-create')%>
+        <%- partial('../partials/slide-edit')%>
+    </div>
+    <script data-main="/javascripts/main.js" src="/javascripts/require.js"></script>
+  </body>
+</html>

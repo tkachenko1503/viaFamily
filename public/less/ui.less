@@ -1,0 +1,190 @@
+@import "vars.less";
+@import "mixin.less";
+@import "mobile.less";
+
+@media (min-width: 40rem) {
+  @import "tablet.less";
+}
+@media (min-width: 64rem) {
+  @import "desctop.less";
+}
+
+/*-------------------------------------------styles*/
+body {
+	margin: 0;
+	background-color: @body-azure;
+}
+body>* {
+	background-color: @simple-white;
+}
+.calendar-block {
+	margin: auto;
+	box-shadow: 0px 0px 10px -4px;
+}
+.calendar-header {
+	height: 50px;
+    position: relative;
+}
+.header-head, .footer-foot {
+	height: 50px;
+	background-color: @blue;
+}
+
+
+.calendar-main-block {
+	background-color: @grey-light;
+	border-left: 1px solid @grey;
+	border-right: 1px solid @grey;
+}
+.main-week {
+	border-top: 1px solid @grey;
+	.cross-box-sizing;
+}
+.logo {
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 36px;
+	line-height: 50px;
+	color: @simple-white;
+	padding-left: 15px;
+	height: 50px;
+	width: 180px;
+	.cross-box-sizing;
+}
+.day-names {
+	li {
+		color: @blue-text;
+		font-family: 'Didact Gothic', sans-serif;
+		text-align: center;
+        padding-top: 1%;
+	}
+}
+.day-number {
+  color: @blue-text;
+  font-weight: 300;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.calendar-main-block, .main-days-list-wrapper {
+  overflow: hidden;
+}
+.details-slider {
+  display: none;
+}
+.active_slider {
+  display: block;
+}
+.selected {
+  box-shadow: 0 0 10px -1px @blue-text;
+  z-index: 5;
+}
+.slide-wrap {
+  height: 100%;
+  overflow: auto;
+  border-top: 1px solid @grey;
+}
+.slide-wrap>* {
+  height: 100%;
+  white-space: nowrap;
+}
+.slide {
+  display: inline-block;
+  height: 100%;
+  width: 140px;
+  background-color: @grey;
+  white-space: initial;
+  cursor: pointer;
+  vertical-align: top;
+}
+.slide:hover {
+  box-shadow: inset 0 0 10px -2px @black;
+}
+.slide-foto {
+  width: 50px;
+  height: 50px;
+  margin: 15px auto;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.slide-title, .slide-description {
+  text-align: center;
+  margin: 15px 4px;
+  border-radius: 3px;
+  background-color: @simple-white;
+  padding: 8px 5px;
+  overflow: hidden;
+}
+.slide-title {
+  max-height: 32px;
+  line-height: 20px;
+}
+.activeDialog {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  z-index: 90;
+  border: 1px solid @grey;
+}
+.none {
+  display: none;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: @black;
+  opacity: 0.6;
+  z-index: 80;
+}
+.dialog {
+  padding: 20px;
+  overflow: auto;
+  .close-icon{
+    position: absolute;
+    right: 30px;
+    font-size: 20px;
+  }
+  .close-icon:hover {
+    color: @icon-grey;
+    cursor: pointer;
+  }
+  label {
+    margin-right: 20px;
+    font-size: 12px;
+  }
+  .full-title, .full-schedule, .full-type {
+    display: inline-block;
+  }
+  .full-title, .full-desc, .whoSee-group, .full-schedule, .full-type {
+    background-color: @body-azure;
+    padding: 0 5px;
+    font-weight: bold;
+    margin: 10px 0 0 20px;
+    font-size: 14px;
+  }
+  .full-desc, .whoSee-group {
+    margin-left: 20px;
+    width: 50%;
+    min-height: 40px;
+    display: block;
+  }
+  .whoSee-group {
+    ul {
+      margin: 0;
+    }
+  }
+  .full-type-select {
+    margin: 10px 0 0 20px;
+  }
+  input[type = 'submit'] {
+    position: absolute;
+    bottom: 8%;
+    right: 40px;
+  }
+  .full-slide>*, .full-slide>form>* {
+    margin-top: 20px;
+  }
+}

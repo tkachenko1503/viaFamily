@@ -1,0 +1,38 @@
+
+<div data-bind="visible: editThisSlide, with: $root.fullSlide" class="full-slide">
+    <form data-bind="submit: $root.saveNewSlide" name="edit">
+        <div class="full-slide-title">
+            <label for="full-title">Name:</label><br/>
+            <input id="full-title" class="full-title" data-bind="value: $data.name">
+        </div>
+        <div class="full-slide-desc">
+            <label for="full-desc">Description:</label>
+            <textarea id="full-desc" class="full-desc" data-bind="value: $data.description"></textarea>
+        </div>
+        <div class="full-slide-whoSee">
+            <label for="full-whoSee">Who can see:</label>
+            <div class="whoSee-group">
+                <label for="whoSee-group">Group:</label>
+                <select id="full-whoSee">
+                    <option value="1">Group 1</option>
+                    <option value="2">Group 2</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="full-slide-schedule">
+            <label for="full-schedule">Schedule:</label><br>
+            <input id="full-schedule" type="date" class="full-schedule" data-bind="value: $data.schedule">
+        </div>
+        <div class="full-slide-type">
+            <label for="full-type">Type:</label><br>
+            <select id="full-type" >
+                <option value="reminder">Reminder</option>
+                <option value="meets">Meets</option>
+                <option value="facts">Facts</option>
+            </select>
+        </div>
+        <input type="submit" value="Save"/>
+        <input type="hidden" id="slideId" data-bind="value: $data._id">
+    </form>
+</div>

@@ -1,0 +1,36 @@
+
+    <div class="full-slide" data-bind="visible: showEditForm">
+        <form data-bind="submit: saveNewSlide" name="create">
+            <div class="full-slide-title">
+                <label for="full-title">Name:</label><br/>
+                <input id="full-title" class="full-title" type="text" required>
+            </div>
+            <div class="full-slide-desc">
+                <label for="full-desc">Description:</label>
+                <textarea id="full-desc" class="full-desc"></textarea>
+            </div>
+            <div class="full-slide-whoSee">
+                <label for="full-whoSee">Who can see:</label>
+                <select id="full-whoSee">
+                    <option value="1">Group 1</option>
+                    <option value="2">Group 2</option>
+                    <option value="3">Group 3</option>
+                </select>
+                <div class="whoSee-group">
+                </div>
+            </div>
+            <div class="full-slide-schedule">
+                <label for="full-schedule">Schedule:</label><br>
+                <input id="full-schedule" class="full-schedule" type="date">
+            </div>
+            <div class="full-slide-type">
+                <label for="full-type-select">Type:</label><br>
+                <select class="full-type-select">
+                    <option value="reminder">Reminder</option>
+                    <option value="meets">Meets</option>
+                    <option value="facts">Facts</option>
+                </select>
+            </div>
+            <input type="submit" value="Save"/>
+        </form>
+    </div>

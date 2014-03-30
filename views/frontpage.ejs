@@ -1,0 +1,70 @@
+<% layout('layout/page') %>
+
+<main class="clearfix">
+    <aside class="calendar-left-col column aside-width">
+        <div class="aside-menu">
+            <header>
+                <h3 class="column main-width"><i class="icon-th-list"></i><span class="filt-text"> Фильтры</span></h3>
+            </header>
+            <ul class="column main-width filters">
+                <li class="event-filters"><i class="icon-archive"></i><span class="filt-text">Все</span></li>
+                <li class="event-filters"><i class="icon-group"></i><span class="filt-text">Группы</span></li>
+                <li class="event-filters"><i class="icon-torso"></i><span class="filt-text">Мои</span></li>
+                <li class="event-filters"><i class="icon-tags"></i><span class="filt-text">Тип</span></li>
+            </ul>
+        </div>
+    </aside>
+    <div class="calendar-main-block column main-width">
+        <div class="main-head-nav">
+            <ul class="day-names">
+                <li class="column seven">Пн</li>
+                <li class="column seven">Вт</li>
+                <li class="column seven">Ср</li>
+                <li class="column seven">Чт</li>
+                <li class="column seven">Пт</li>
+                <li class="column seven">Сб</li>
+                <li class="column seven">Вс</li>
+            </ul>
+        </div>
+        <div class="main-days-list-wrapper">
+            <div class="main-days-list" data-bind="foreach: days">
+                <ul class="main-week" data-bind="foreach: week">
+                    <li class="column seven" data-bind="click: $root.showSlideBar, css: { selected: $data.id == $root.chosenDay() }">
+
+                        <span class="day-number" data-bind="text: $data.title"></span>
+                        <ul class="day-info">
+                            <li class="reminder" data-bind="visible: $data.dayEvents().reminder > 0">
+                                <i class="icon-bell"></i>
+                                <span data-bind="text: $data.dayEvents().reminder"></span>
+                            </li>
+                            <li class="meets" data-bind="visible: $data.dayEvents().meets > 0">
+                                <i class="icon-location"></i>
+                                <span data-bind="text: $data.dayEvents().meets"></span>
+                            </li>
+                            <li class="day-events" data-bind="visible: $data.dayEvents().facts > 0">
+                                <i class="icon-calendar"></i>
+                                <span data-bind="text: $data.dayEvents().facts"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="details-slider" data-bind="css: { active_slider: $data.numb == $root.activeSlider() }">
+                    <div class="slide-wrap" data-bind="with: $root.slidersData">
+                        <div data-bind="foreach: sliders">
+                            <div class="slide" data-bind="click: $root.showPopup">
+                                <div class="slide-foto">
+                                    <img src="/images/50x50.gif" alt="sender"/>
+                                </div>
+                                <div class="slide-title" data-bind="text: $data.name"></div>
+                                <div class="slide-description" data-bind="text: $data.description"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-foot-nav">
+
+        </div>
+    </div>
+</main>

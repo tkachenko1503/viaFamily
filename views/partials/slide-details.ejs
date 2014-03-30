@@ -1,0 +1,29 @@
+
+    <div data-bind="visible: showFullSlide, with: fullSlide" class="full-slide">
+        <div class="full-slide-title">
+            <label for="full-title">Name:</label><br/>
+            <span id="full-title" class="full-title" data-bind="text: $data.name"></span>
+        </div>
+        <div class="full-slide-desc">
+            <label for="full-desc">Description:</label>
+            <p id="full-desc" class="full-desc" data-bind="text: $data.description"></p>
+        </div>
+        <div class="full-slide-whoSee">
+            <label for="full-whoSee">Who can see:</label>
+            <div class="whoSee-group">
+                <label for="whoSee-group">Group:</label>
+                <ul>
+                    <li data-bind="text: $data.whosee"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="full-slide-schedule">
+            <label for="full-schedule">Schedule:</label><br>
+            <span id="full-schedule" class="full-schedule" data-bind="text: new Date($data.schedule).toDateString()"></span>
+        </div>
+        <div class="full-slide-type">
+            <label for="full-type">Type:</label><br>
+            <span id="full-type" class="full-type" data-bind="text: $data.type"></span>
+        </div>
+        <input id="edit-this" type="submit" value="Edit" data-bind="click: $root.showPopup"/>
+    </div>

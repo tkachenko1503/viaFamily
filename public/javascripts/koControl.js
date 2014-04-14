@@ -17,8 +17,21 @@ define(['ko'], function(ko) {
         activeSlider : ko.observable(),
         popup : ko.observable(),
         days : ko.observableArray(),
-        slidersData : ko.observable()
+        slidersData : ko.observable(),
+        logged : ko.observable(false)
     };
+
+    ko.bindingHandlers.logIn = {
+        init: function(element, valueAccessor) {
+            ko.bindingHandlers.visible.update(element, valueAccessor);
+        },
+        update: function(element, valueAccessor){
+            if(ko.utils.unwrapObservable(valueAccessor())){
+                ko.bindingHandlers.visible.update(element, valueAccessor);
+            }
+        }
+    };
+
 
     return AppModel;
 });

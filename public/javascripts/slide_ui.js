@@ -79,6 +79,25 @@ define(['jquery', 'ko', 'koControl', 'mediator', 'calendar'], function($, ko, Ap
                     }
                 });
         };
+
+        App.sendLogin = function(formData){
+            var data = {
+                user: formData[0].value,
+                pass: formData[1].value
+            };
+            $.ajax({
+                url: '/login',
+                type: 'POST',
+                data: {data: data},
+                beforeSend: function(){
+                    AppVM.closePopup();
+                }
+            }).done(function(status){
+                if(status == 'ok'){
+
+                }
+            });
+        };
     };
 
     function getMonthViewData(month){
@@ -126,9 +145,14 @@ define(['jquery', 'ko', 'koControl', 'mediator', 'calendar'], function($, ko, Ap
             year = currentDate.getFullYear(),
             month = currentDate.getMonth()+ 1,
             monthArray = new calendar.Calendar().monthdatescalendar(year, month);
-        if(monthArray.length < 6){
+        var len = monthArray.length;
+        if(len < 6){
             var nextMonth = new calendar.Calendar().monthdatescalendar(year, month+1);
-            monthArray.push(nextMonth[0]);
+            if(monthArray[len - 1][0].getDate() === nextMonth[0][0].getDate()){
+                monthArray.push(nextMonth[1]);
+            }else{
+                monthArray.push(nextMonth[0]);
+            }
         }
         return monthArray;
     }
@@ -156,11 +180,17 @@ define(['jquery', 'ko', 'koControl', 'mediator', 'calendar'], function($, ko, Ap
         });
     };
 
+    function showLogForm(){
+        AppVM.logged(true);
+        AppVM.showOverlay(true);
+        AppVM.popupVisible('activeDialog');
+    };
 
     AppEvent.subscribe({
         'app:ready': init,
         'ui:drawCalendar': drawCalendar,
         'ui:getViewData': getMonthViewData,
-        'ui:getDaySlider': getDaySlider
+        'ui:getDaySlider': getDaySlider,
+        'user:logIn': showLogForm
     });
 });

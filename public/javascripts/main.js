@@ -15,7 +15,7 @@ requirejs.config({
     }
 });
 
-requirejs(['jquery', 'ko', 'koControl', 'slide_ui', 'mediator'],
+requirejs(['jquery', 'ko', 'koControl', 'slide_ui', 'mediator', 'socket_ui'],
     function   ($, ko, AppVM, slide_ui, AppEvent) {
 
         function init(App){

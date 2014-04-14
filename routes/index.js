@@ -1,5 +1,7 @@
 module.exports = function(app) {
 
+  app.post('/login', require('./login').post);
+
   app.get('/', require('./frontpage').get);
   app.post('/calendar_data', require('./slide').viewData);
 

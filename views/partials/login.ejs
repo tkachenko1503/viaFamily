@@ -1,0 +1,13 @@
+<section id="login_form" data-bind="logIn: logged">
+    <form name="login" data-bind="submit: sendLogin">
+        <p>
+            <label for="username">Enter Your Name</label>
+            <input id="username" name="username" required="required" placeholder="myusername" type="text"/>
+        </p>
+        <p>
+            <label for="pass">Password</label>
+            <input id="pass" name="pass" required="required" placeholder="mypassword" type="text"/>
+        </p>
+        <input type="submit" value="Login"/>
+    </form>
+</section>

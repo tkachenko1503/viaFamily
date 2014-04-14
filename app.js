@@ -4,7 +4,8 @@ var http = require('http');
 var path = require('path');
 var config = require('./config');
 var log = require('./libs/log')(module);
-var mongoose = require('./libs/mongoose');
+var mongooseRoot = require('./libs/mongoose');
+var mongoose = require('./libs/store');
 var HttpError = require('./error').HttpError;
 var app = express();
 var lessMiddleware = require('less-middleware');
@@ -30,7 +31,7 @@ app.use(express.session({
     secret: config.get('session:secret'),
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
-    store: new mongoStore({mongoose_connection: mongoose.connection})
+    store: mongoose
 }));
 
 app.use(app.router);
@@ -64,8 +65,11 @@ app.use(function(err, req, res, next){
     }
 });
 
-
+var port = Number(process.env.PORT || config.get('port'));
 var server = http.createServer(app);
-server.listen(config.get('port'), function(){
-  log.info('Express server listening on port ' + config.get('port'));
+server.listen(port, function() {
+    console.log("Listening on " + port);
 });
+var chatServer = require('./socket');
+chatServer.listen(server);
+app.set('io', chatServer);
